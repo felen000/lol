@@ -15,7 +15,7 @@ block.addEventListener('click', handleBlockClick)
 block.addEventListener('mouseenter', () => {
 	setTimeout(
 		handleBlockEnter
-	, 160);
+	, 150);
 } )
 
 
