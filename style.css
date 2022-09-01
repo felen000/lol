@@ -4,6 +4,28 @@
 	padding: 0;
 }
 
+
+
+@keyframes shaking {
+	from {
+		transform: translateX(-5px);
+	}
+
+	50% {
+		transform: translateX(5px);
+	}
+
+	to {
+		transform: translateX(-5px);
+	}
+}
+
+@keyframes big {
+	to {
+		font-size: 100px;
+	}
+}
+
 .outer {
 	background-color: aqua;
 	position: relative;
@@ -14,6 +36,7 @@
 	height: 100vh;
 	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 	user-select: none;
+	
 }
 
 .block {
@@ -52,4 +75,5 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	animation: shaking .1s ease infinite, big 5s ease infinite;
 }
