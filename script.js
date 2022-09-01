@@ -1,4 +1,5 @@
-let block = document.querySelector('.inner')
+'use strict'
+let block = document.querySelector('.block')
 let outer = document.querySelector('.outer')
 let lol = document.querySelector('.lol')
 
@@ -8,26 +9,39 @@ let	maxLeft = size.width - 50
 
 setInterval(lolTransform, 500)
 
-block.addEventListener('mouseenter', blockHandler)
+move(block)
 
-function blockHandler() {
+block.addEventListener('click', handleBlockClick)
+block.addEventListener('mouseenter', () => {
+	setTimeout(
+		handleBlockEnter
+	, 160);
+} )
+
+
+function handleBlockClick () {
+	outer.style.background = '#000'
+	outer.innerHTML = ''
+	outer.insertAdjacentHTML("afterbegin", '<div class="death"> <h1>YOU DIED!</h1> <span>:)</span></div>')
+}
+
+function handleBlockEnter() {
 	move(block)
-	resize(block)
+	resize(block, 3)
 }
 
 function lolTransform() {
+	resize(lol, 5)
 	move(lol)
-	resize(lol)
 }
 
 function move(obj) {
-	console.log('gg');
 	obj.style.top = getRandom(0, maxTop) + 'px';
 	obj.style.left = getRandom(0, maxLeft) + 'px';
 }
 
-function resize(obj) {
-	obj.style.transform = `scale(${getRandom(1, 5)})`
+function resize(obj, max) {
+	obj.style.transform = `scale(${getRandom(1, max)})`
 }
 
 function getRandom(min, max) {
